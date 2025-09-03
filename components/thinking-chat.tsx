@@ -224,8 +224,9 @@ export function ThinkingChat({ onMessagesChange, hasFirecrawlKey = false, onApiK
                 ))
               }
             } catch (e) {
-              // Error parsing SSE data
-            }
+  // Error parsing SSE data - log it for debugging
+  console.error('Failed to parse SSE line:', line, e)
+}
           }
         }
       }
