@@ -41,9 +41,9 @@ Only return the JSON array, nothing else.`
       messages: [
         {
           role: 'user',
-          content: prompt
-        }
-      ]
+          content: prompt,
+        },
+      ],
     })
 
     const content = response.content[0]
@@ -57,15 +57,17 @@ Only return the JSON array, nothing else.`
       if (!Array.isArray(questions)) {
         throw new Error('Response is not an array')
       }
-      
+
       return NextResponse.json({ questions })
     } catch {
       // Failed to parse follow-up questions
       return NextResponse.json({ questions: [] })
     }
-
-  } catch (error) {
-    // Error generating follow-up questions
+  } catch (_error) {
+    // Log the error for debugging
+    console.error('Error generating follow-up questions:', _error)
+    
+    // Return a generic error response
     return NextResponse.json(
       { error: 'Failed to generate follow-up questions' },
       { status: 500 }
