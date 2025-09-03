@@ -1,4 +1,3 @@
-./lib/open-researcher-agent.ts
 import Anthropic from '@anthropic-ai/sdk';
 import FirecrawlApp from '@mendable/firecrawl-js';
 
